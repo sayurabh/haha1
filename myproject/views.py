@@ -21,7 +21,7 @@ def callback(request):
 def callback1(request):
 	number = request.GET.get('number')
 	print number
-	params = {'apikey': yourapiKey, 'numbers': number, 'message' : message, 'sender': sender}
+	params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
     f = urllib.request.urlopen('https://api.textlocal.in/send/?'
         + urllib.parse.urlencode(params))
     return (f.read(), f.code)
