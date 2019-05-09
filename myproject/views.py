@@ -29,4 +29,5 @@ def callback1(request):
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
+	return HttpResponse("return this string")
 	
