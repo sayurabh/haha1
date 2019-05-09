@@ -12,7 +12,7 @@ from django.http import JsonResponse
 def callback(request):
 	number = request.GET.get('number')
 	print number
-	req = urllib2.Request('http://sms.digimiles.in/bulksms/bulksms?username=di78-saurabh&password=digimile&type=0&dlr=1&destination='+number+'&source=DLPHAR&message=Hello')
+	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+number+'&message=Your OTP is X')
 	response = urllib2.urlopen(req)
 	the_page = response.read()
 	print the_page 
