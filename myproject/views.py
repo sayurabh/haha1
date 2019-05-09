@@ -27,6 +27,6 @@ def callback1(request):
 	#data = urllib.urlencode(params)
 	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers=917217631327&message=Your%20OTP%20is%20X')
 	f = urllib2.urlopen(req)
-	print f
-	return (f.read())
+	the_page = r.read()
+	print the_page
 	
