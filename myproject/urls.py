@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from views import callback
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
      url(r'^callback$', view=callback, name='callback')
