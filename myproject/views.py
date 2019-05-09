@@ -27,5 +27,6 @@ def callback1(request):
 	data = urllib.urlencode(params)
 	req = urllib2.Request('https://api.textlocal.in/send/?', data)
 	f = urllib2.urlopen(req)
+	print f
 	return (f.read())
 	
