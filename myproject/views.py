@@ -17,4 +17,12 @@ def callback(request):
 	the_page = response.read()
 	print the_page 
 	return HttpResponse("return this string")
+
+def callback1(request):
+	number = request.GET.get('number')
+	print number
+	params = {'apikey': yourapiKey, 'numbers': number, 'message' : message, 'sender': sender}
+    f = urllib.request.urlopen('https://api.textlocal.in/send/?'
+        + urllib.parse.urlencode(params))
+    return (f.read(), f.code)
 	
