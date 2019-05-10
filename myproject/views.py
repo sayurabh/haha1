@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from random import randint
+from django.core import serializers
 import urllib
 import urllib2
 from django.http import JsonResponse
@@ -31,5 +32,6 @@ def callback1(request):
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
-	return JsonResponse(the_page)
+    posts_serialized = serializers.serialize('json', the_page)
+    return JsonResponse(posts_serialized, safe=False) 
 	
