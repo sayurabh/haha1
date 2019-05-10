@@ -1,5 +1,5 @@
 from django.template import Context, RequestContext
-
+from django.http import JsonResponse
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from random import randint
@@ -31,5 +31,5 @@ def callback1(request):
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
-	return HttpResponse(the_page)
+	return JsonResponse(the_page)
 	
