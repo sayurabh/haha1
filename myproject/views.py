@@ -34,5 +34,6 @@ def callback1(request):
 	the_page = f.read()
 	print the_page
 	#posts_serialized = serializers.serialize('json', the_page)
-	return JsonResponse(json.dumps(the_page),safe=False ) 
+	#return JsonResponse(json.dumps(the_page),safe=False ) 
+	HttpResponse(the_page)
 	
