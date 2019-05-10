@@ -32,6 +32,6 @@ def callback1(request):
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
-	posts_serialized = serializers.serialize('json', the_page)
-	return JsonResponse(posts_serialized, safe=False) 
+	#posts_serialized = serializers.serialize('json', the_page)
+	return JsonResponse(json.dumps(the_page) ) 
 	
