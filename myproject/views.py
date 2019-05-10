@@ -22,7 +22,8 @@ def callback(request):
 
 def callback1(request):
 	#number = request.GET.get('number')
-	print request.POST
+	number = request.POST.get('lastupdate')
+	print number
 	otp = str(randint(1000, 9999))
 	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
 	#data = urllib.urlencode(params)
