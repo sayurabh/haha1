@@ -32,7 +32,7 @@ def callback(request):
 def callback1(request):
 	#number = request.GET.get('number')
 
-	key="ssshhhhhh!ghjjh"
+	key="ssshhhhhh!ghjjhu"
 	message = request.POST.get('lastupdate')
 	print message
 	byte_array = base64.b64decode(message)
