@@ -8,6 +8,11 @@ import json
 import urllib
 import urllib2
 from django.http import JsonResponse
+    
+from Crypto.Cipher import AES
+import base64
+import sys
+import os
 # your other views
 #
 #
