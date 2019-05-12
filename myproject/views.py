@@ -26,23 +26,18 @@ def callback(request):
 
 def callback1(request):
 	#number = request.GET.get('number')
+	key="ssshhhhhh!ghjjkh"
 	message = request.POST.get('lastupdate')
 	byte_array = base64.b64decode(message)
-
-    iv = byte_array[0:16] # extract the 16-byte initialization vector
-
-    messagebytes = byte_array[16:] # encrypted message is the bit after the iv
-
-    cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
-
-    decrypted_padded = cipher.decrypt(messagebytes)
-
-    decrypted = unpad(decrypted_padded)
-
-    print decrypted.decode("UTF-8");
+	iv = byte_array[0:16] # extract the 16-byte initialization vector
+	messagebytes = byte_array[16:] # encrypted message is the bit after the iv
+	cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
+	decrypted_padded = cipher.decrypt(messagebytes)
+	decrypted = unpad(decrypted_padded)
+	print decrypted.decode("UTF-8");
 
 	#number = request.POST.get('lastupdate')
-	print number
+	#print number
 	otp = str(randint(1000, 9999))
 	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
 	#data = urllib.urlencode(params)
