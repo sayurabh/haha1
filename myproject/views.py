@@ -38,6 +38,7 @@ def callback1(request):
 	messagebytes = byte_array[16:] # encrypted message is the bit after the iv
 	cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
 	decrypted_padded = cipher.decrypt(messagebytes)
+	print decrypted_padded
 	decrypted = unpad(decrypted_padded)
 	print decrypted.decode("UTF-8");
 
