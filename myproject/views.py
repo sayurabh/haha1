@@ -49,11 +49,13 @@ def callback1(request):
 	otp = str(randint(1000, 9999))
 	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
 	#data = urllib.urlencode(params)
-	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&message=<#>%20Your%20OTP%20code%20is%20'+otp+'%203cXjdgXWKK6')
+	otp_string = urllib.quote('<#> Your OTP code is '+otp+' 3cXjdgXWKK6')
+	print otp_string
+	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&'+otp_string)
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
-	#posts_serialized = serializers.serialize('json', the_page)
+	#posts_serialized = serializers.serialize('json', the_page)'
 	return JsonResponse(json.dumps(the_page),safe=False ) 
 	#return HttpResponse("pop")
 	
