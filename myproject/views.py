@@ -63,8 +63,8 @@ def callback1(request):
 	#print number
 	otp = str(randint(1000, 9999))
 	#cur = conn.cursor()
-	postgres_insert_query = """ INSERT INTO OTPTABL (MNUMBER,OTP) VALUES (%s,%s)"""
-	record_to_insert = (decrypted_padded, otp)
+	postgres_insert_query = """ INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (%s,%s)"""
+	record_to_insert = (decrypted_padded[0:9], otp)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
 	conn.commit()
