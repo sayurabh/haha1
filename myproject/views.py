@@ -65,5 +65,20 @@ def callback1(request):
 	print the_page
 
 	return JsonResponse(json.dumps(the_page),safe=False ) 
-	#return HttpResponse("pop")
+def fetchhaha(request):
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cursor = connection.cursor()
+	postgreSQL_select_Query = "select * from company"
+	cursor.execute(postgreSQL_select_Query)
+	print("Selecting rows from mobile table using cursor.fetchall")
+	mobile_records = cursor.fetchall() 
+	print("Print each row and it's columns values")
+	for row in mobile_records:
+       print("Id = ", row[0], )
+       print("Model = ", row[1])
+       print("Price  = ", row[2])
+       print("sdfg = ",row[3], "\n")
+    conn.close()
+	return HttpResponse("pop")
 	
