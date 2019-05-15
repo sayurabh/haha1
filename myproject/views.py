@@ -75,10 +75,10 @@ def fetchhaha(request):
 	mobile_records = cursor.fetchall() 
 	print("Print each row and it's columns values")
 	for row in mobile_records:
-       print("Id = ", row[0], )
-       print("Model = ", row[1])
-       print("Price  = ", row[2])
-       print("sdfg = ",row[3], "\n")
+		print("Id = ", row[0], )
+		print("Model = ", row[1])
+		print("Price  = ", row[2])
+		print("sdfg = ",row[3], "\n")
     conn.close()
 	return HttpResponse("pop")
 	
