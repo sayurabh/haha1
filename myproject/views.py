@@ -8,7 +8,7 @@ import json
 import urllib
 import urllib2
 from django.http import JsonResponse
-    
+from firebase import firebase
 from Crypto.Cipher import AES
 import base64
 import sys
@@ -56,6 +56,10 @@ def callback1(request):
 	the_page = f.read()
 	print the_page
 	#posts_serialized = serializers.serialize('json', the_page)'
+	firebase = firebase.FirebaseApplication('https://locascnkfmwe.firebaseio.com', None)
+	new_user = 'Ozgur Vatansever'
+	result = firebase.post('/users', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+	print result
 	return JsonResponse(json.dumps(the_page),safe=False ) 
 	#return HttpResponse("pop")
 	
