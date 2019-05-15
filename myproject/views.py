@@ -8,7 +8,7 @@ import json
 import urllib
 import urllib2
 from django.http import JsonResponse
-from firebase import firebase
+import psycopg2
 from Crypto.Cipher import AES
 import base64
 import sys
@@ -33,6 +33,8 @@ def callback1(request):
 	#number = request.GET.get('number')
 
 	key="ssshhhhhh!ghjjkh"
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
 	message = request.POST.get('lastupdate')
 	#print message
 	byte_array = base64.b64decode(message)
@@ -55,11 +57,7 @@ def callback1(request):
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
-	#posts_serialized = serializers.serialize('json', the_page)'
-	firebase = firebase.FirebaseApplication('https://locascnkfmwe.firebaseio.com', None)
-	new_user = 'Ozgur Vatansever'
-	result = firebase.post('/users', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
-	print result
+
 	return JsonResponse(json.dumps(the_page),safe=False ) 
 	#return HttpResponse("pop")
 	
