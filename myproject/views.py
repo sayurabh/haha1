@@ -68,7 +68,7 @@ def callback1(request):
 def fetchhaha(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
-	cursor = connection.cursor()
+	cursor = conn.cursor()
 	postgreSQL_select_Query = "select * from company"
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
