@@ -79,6 +79,7 @@ def fetchhaha(request):
 		print("Model = ", row[1])
 		print("Price  = ", row[2])
 		print("sdfg = ",row[3], "\n")
-    conn.close()
+
+	conn.close()
 	return HttpResponse("pop")
 	
