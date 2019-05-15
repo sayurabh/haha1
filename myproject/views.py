@@ -35,11 +35,15 @@ def callback1(request):
 	key="ssshhhhhh!ghjjkh"
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
+	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute("INSERT INTO users (age, email, first_name, last_name) VALUES (30, 'jon@calhoun.io', 'Jonathan', 'Calhoun');");
-	conn.commit()
-	print "Records created successfully";
-	conn.close()
+	cur.execute('''CREATE TABLE COMPANY
+      (ID INT PRIMARY KEY     NOT NULL,
+      NAME           TEXT    NOT NULL,
+      AGE            INT     NOT NULL,
+      ADDRESS        CHAR(50),
+      SALARY         REAL);''')
+	print "Table created successfully"
 	message = request.POST.get('lastupdate')
 	#print message
 	byte_array = base64.b64decode(message)
