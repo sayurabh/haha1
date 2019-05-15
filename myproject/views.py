@@ -35,10 +35,9 @@ def callback1(request):
 	key="ssshhhhhh!ghjjkh"
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
-	print "Opened database successfully"
+
 	cur = conn.cursor()
-	cur.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-      VALUES (1, 'Paul', 32, 'California', 20000.00 )");
+	cur.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 )");
 	conn.commit()
 	print "Records created successfully";
 	conn.close()
