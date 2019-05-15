@@ -37,13 +37,11 @@ def callback1(request):
 	print "Opened database successfully"
 	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute('''CREATE TABLE COMPANY
-      (ID INT PRIMARY KEY     NOT NULL,
-      NAME           TEXT    NOT NULL,
-      AGE            INT     NOT NULL,
-      ADDRESS        CHAR(50),
-      SALARY         REAL);''')
-	print "Table created successfully"
+	cur.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
+      VALUES (1, 'Paul', 32, 'California', 20000.00 )");
+	conn.commit()
+	print "Records created successfully";
+	conn.close()
 	message = request.POST.get('lastupdate')
 	#print message
 	byte_array = base64.b64decode(message)
