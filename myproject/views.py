@@ -36,18 +36,18 @@ def callback1(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute('''CREATE TABLE OTPTABLE
-      (
-      MNUMBER           CHAR(10)    NOT NULL,
-      OTP            CHAR(4)     NOT NULL
-      );''')
-	print "Table created successfully"
-	
+	#cur.execute('''CREATE TABLE OTPTABLE
+    #  (
+    #  MNUMBER           CHAR(10)    NOT NULL,
+    #  OTP            CHAR(4)     NOT NULL
+    #  );''')
+	#print "Table created successfully"
+
 	#cur = conn.cursor()
-	#cur.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 )");
-	conn.commit()
-	print "Records created successfully";
-	conn.close()
+	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (1, 'Paul', 32, 'California', 20000.00 )");
+	#conn.commit()
+	#print "Records created successfully";
+	#conn.close()
 	message = request.POST.get('lastupdate')
 	#print message
 	byte_array = base64.b64decode(message)
@@ -62,6 +62,11 @@ def callback1(request):
 	#number = request.POST.get('lastupdate')
 	#print number
 	otp = str(randint(1000, 9999))
+	cur = conn.cursor()
+	cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
+	conn.commit()
+	print "Records created successfully";
+	conn.close()
 	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
 	#data = urllib.urlencode(params)
 	otp_string = urllib.quote('<#> Your OTP code is '+otp+' 3cXjdgXWKK6')
