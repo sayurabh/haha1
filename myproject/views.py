@@ -36,18 +36,18 @@ def callback1(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute('''CREATE TABLE OTPTAB
-     (
-      MNUMBER           CHAR(10)    PRIMARY KEY  NOT NULL,
-      OTP            CHAR(4)     NOT NULL
-      );''')
+	#cur.execute('''CREATE TABLE OTPTAB
+    # (
+    #  MNUMBER           CHAR(10)    PRIMARY KEY  NOT NULL,
+    #  OTP            CHAR(4)     NOT NULL
+    #  );''')
 	#print "Table created successfully"
 
 	#cur = conn.cursor()
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (1, 'Paul', 32, 'California', 20000.00 )");
-	conn.commit()
-	print "Records created successfully";
-	conn.close()
+	#conn.commit()
+	#print "Records created successfully";
+	#conn.close()
 	message = request.POST.get('lastupdate')
 	#print message
 	byte_array = base64.b64decode(message)
@@ -63,13 +63,13 @@ def callback1(request):
 	#print number
 	otp = str(randint(1000, 9999))
 	#cur = conn.cursor()
-	#postgres_insert_query = """ INSERT INTO OTPTABLE VALUES (%s,%s) ON CONFLICT (MNUMBER) DO UPDATE SET OTP=Excluded.OTP"""
-	#record_to_insert = (decrypted_padded[0:10], otp)
+	postgres_insert_query = """ INSERT INTO OTPTAB VALUES (%s,%s) ON CONFLICT (MNUMBER) DO UPDATE SET OTP=Excluded.OTP"""
+	record_to_insert = (decrypted_padded[0:10], otp)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
-	#cur.execute(postgres_insert_query, record_to_insert)
-	#conn.commit()
-	#print "Records created successfully";
-	#conn.close()
+	cur.execute(postgres_insert_query, record_to_insert)
+	conn.commit()
+	print "Records created successfully";
+	conn.close()
 	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
 	#data = urllib.urlencode(params)
 	otp_string = urllib.quote('<#> Your OTP code is '+otp+' 3cXjdgXWKK6')
