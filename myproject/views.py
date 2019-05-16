@@ -84,16 +84,16 @@ def fetchhaha(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cursor = conn.cursor()
-	postgreSQL_select_Query = "select * from otptable"
+	#postgreSQL_select_Query = "select * from otptable"4
+	postgreSQL_select_Query = "truncate otptable;"
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
 	mobile_records = cursor.fetchall() 
 	print("Print each row and it's columns values")
-	for row in mobile_records:
-		print("Id = ", row[0], )
-		print("Model = ", row[1],"\n")
-
-
+	#for row in mobile_records:
+	#	print("Id = ", row[0], )
+	#	print("Model = ", row[1],"\n")
+	conn.commit()
 	conn.close()
 	return HttpResponse("pop")
 	
