@@ -90,9 +90,9 @@ def fetchhaha(request):
 	print("Selecting rows from mobile table using cursor.fetchall")
 	#mobile_records = cursor.fetchall() 
 	print("Print each row and it's columns values")
-	#for row in mobile_records:
-	#	print("Id = ", row[0], )
-	#	print("Model = ", row[1],"\n")
+	for row in mobile_records:
+		print("Id = ", row[0], )
+		print("Model = ", row[1],"\n")
 	#conn.commit()
 	conn.close()
 	return HttpResponse("pop")
