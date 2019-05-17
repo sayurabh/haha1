@@ -72,7 +72,7 @@ def callback1(request):
 	conn.close()
 	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
 	#data = urllib.urlencode(params)
-	otp_string = urllib.quote('<#> Your OTP code is '+otp+' 3cXjdgXWKK6')
+	otp_string = urllib.quote('<#> Your OTP code is '+otp+' alf9AzZD/pU')
 	print otp_string
 	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&message='+'<%23>%20Your%20OTP%20is%20'+otp+'%203cXjdgXWKK6')
 	f = urllib2.urlopen(req)
