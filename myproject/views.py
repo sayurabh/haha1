@@ -79,7 +79,7 @@ def callback1(request):
 	the_page = f.read()
 	print the_page
 
-	return JsonResponse(the_page,safe=False ) 
+	return HttpResponse(the_page) 
 def fetchhaha(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
