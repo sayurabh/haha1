@@ -74,7 +74,7 @@ def callback1(request):
 	#data = urllib.urlencode(params)
 	otp_string = urllib.quote('<#> Your OTP code is '+otp+' alf9AzZD/pU')
 	print otp_string
-	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&message='+'<%23>%20Your%20OTP%20is%20'+otp+'%203cXjdgXWKK6')
+	req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&message='+'<%23>%20Your%20OTP%20is%20'+otp+'%20alf9AzZD/pU')
 	f = urllib2.urlopen(req)
 	the_page = f.read()
 	print the_page
