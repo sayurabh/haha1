@@ -103,7 +103,7 @@ def callback2(request):
 	record_to_insert = (decrypted_padded[0:10],)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
-	mobile_records = cursor.fetchall() 
+	mobile_records = cur.fetchall() 
 	print("Print each row and it's columns values")
 	for row in mobile_records:
 		print("Id = ", row[0], )
