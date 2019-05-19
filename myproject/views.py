@@ -55,19 +55,7 @@ def callback1(request):
 	#print "Records created successfully";
 	#conn.close()
 	message = request.POST.get('lastupdate')
-	#print message
-	#byte_array = base64.b64decode(message)
-	#iv = byte_array[0:16] # extract the 16-byte initialization vector
-	#messagebytes = byte_array[16:] # encrypted message is the bit after the iv
-	#cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
-	#decrypted_padded = cipher.decrypt(messagebytes)
 	decrypted_padded = decrypt(message,"ssshhhhhh!ghjjkh")
-	#print decrypted_padded
-	#decrypted = unpad(decrypted_padded)
-	#print decrypted_padded.decode("UTF-8");
-
-	#number = request.POST.get('lastupdate')
-	#print number
 	otp = str(randint(1000, 9999))
 	#cur = conn.cursor()
 	postgres_insert_query = """ INSERT INTO OTPTAB VALUES (%s,%s) ON CONFLICT (MNUMBER) DO UPDATE SET OTP=Excluded.OTP"""
