@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from views import callback,callback1,fetchhaha
+from views import callback,callback1,fetchhaha,callback2
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
      url(r'^callback$', view=callback, name='callback'),
        url(r'^callback1$', view=callback1, name='callback1'),
+        url(r'^callback2$', view=callback2, name='callback2'),
         url(r'^fetch$', view=fetchhaha, name='fetch')
 ]

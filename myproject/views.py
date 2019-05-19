@@ -75,6 +75,50 @@ def callback1(request):
 	print the_page
 
 	return HttpResponse(the_page) 
+def callback2(request):
+	#number = request.GET.get('number')
+
+	key="ssshhhhhh!ghjjkh"
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cur = conn.cursor()
+	#cur.execute('''CREATE TABLE OTPTAB
+    # (
+    #  MNUMBER           CHAR(10)    PRIMARY KEY  NOT NULL,
+    #  OTP            CHAR(4)     NOT NULL
+    #  );''')
+	#print "Table created successfully"
+
+	#cur = conn.cursor()
+	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (1, 'Paul', 32, 'California', 20000.00 )");
+	#conn.commit()
+	#print "Records created successfully";
+	#conn.close()
+	message = request.POST.get('lastupdate')
+	otp = request.POST.get('otp')
+	decrypted_padded = decrypt(message,"sertyuiop")
+	otp1 = decrypt(otp,"sertyuiop")
+
+	postgres_insert_query = """ SELECT * FROM OTPTAB VALUES WHERE MNUMBER = %s"""
+	record_to_insert = (decrypted_padded[0:10],)
+	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
+	cur.execute(postgres_insert_query, record_to_insert)
+	mobile_records = cursor.fetchall() 
+	print("Print each row and it's columns values")
+	for row in mobile_records:
+		print("Id = ", row[0], )
+		print("Model = ", row[1],)
+	conn.close()
+	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
+	#data = urllib.urlencode(params)
+	#otp_string = urllib.quote('<#> Your OTP code is '+otp+' alf9AzZD/pU')
+	#print otp_string
+	#req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&message='+'<%23>%20Your%20OTP%20is%20'+otp+'%20alf9AzZD/pU')
+	#f = urllib2.urlopen(req)
+	#the_page = f.read()
+	#print the_page
+
+	return HttpResponse("pop") 
 def fetchhaha(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
