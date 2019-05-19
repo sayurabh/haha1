@@ -96,8 +96,8 @@ def callback2(request):
 	#conn.close()
 	message = request.POST.get('lastupdate')
 	otp = request.POST.get('otp')
-	decrypted_padded = decrypt(message,"sertyuiop")
-	otp1 = decrypt(otp,"sertyuiop")
+	decrypted_padded = decrypt(message,"sertyuioppo#$%^&")
+	otp1 = decrypt(otp,"sertyuioppo#$%^&")
 
 	postgres_insert_query = """ SELECT * FROM OTPTAB VALUES WHERE MNUMBER = %s"""
 	record_to_insert = (decrypted_padded[0:10],)
