@@ -28,7 +28,13 @@ def callback(request):
 	the_page = response.read()
 	print the_page 
 	return HttpResponse("return this string")
-
+def decrypt(message,key):
+	byte_array = base64.b64decode(message)
+	iv = byte_array[0:16] # extract the 16-byte initialization vector
+	messagebytes = byte_array[16:] # encrypted message is the bit after the iv
+	cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
+	decrypted_padded = cipher.decrypt(messagebytes)
+	return decrypted_padded
 def callback1(request):
 	#number = request.GET.get('number')
 
@@ -50,12 +56,13 @@ def callback1(request):
 	#conn.close()
 	message = request.POST.get('lastupdate')
 	#print message
-	byte_array = base64.b64decode(message)
-	iv = byte_array[0:16] # extract the 16-byte initialization vector
-	messagebytes = byte_array[16:] # encrypted message is the bit after the iv
-	cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
-	decrypted_padded = cipher.decrypt(messagebytes)
-	print decrypted_padded
+	#byte_array = base64.b64decode(message)
+	#iv = byte_array[0:16] # extract the 16-byte initialization vector
+	#messagebytes = byte_array[16:] # encrypted message is the bit after the iv
+	#cipher = AES.new(key.encode("UTF-8"), AES.MODE_CBC, iv )
+	#decrypted_padded = cipher.decrypt(messagebytes)
+	decrypted_padded = decrypt(message,"ssshhhhhh!ghjjkh")
+	#print decrypted_padded
 	#decrypted = unpad(decrypted_padded)
 	#print decrypted_padded.decode("UTF-8");
 
