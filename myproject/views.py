@@ -106,19 +106,14 @@ def callback2(request):
 	mobile_records = cur.fetchall() 
 	print("Print each row and it's columns values")
 	for row in mobile_records:
-		print("Id = ", row[0], )
-		print("Model = ", row[1],)
+		otp_recored = row[1]
 	conn.close()
-	#params = {'apikey': '7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hs', 'numbers':'9711143354', 'message' :'message', 'sender': 'DLPHRM'}
-	#data = urllib.urlencode(params)
-	#otp_string = urllib.quote('<#> Your OTP code is '+otp+' alf9AzZD/pU')
-	#print otp_string
-	#req = urllib2.Request('https://api.textlocal.in/send/?apikey=7caYobsaaiU-MRLoIoWisTON1aM7KUeTVcDgwA1Hsi&sender=DLPHRM&numbers='+decrypted_padded+'&message='+'<%23>%20Your%20OTP%20is%20'+otp+'%20alf9AzZD/pU')
-	#f = urllib2.urlopen(req)
-	#the_page = f.read()
-	#print the_page
 
-	return HttpResponse("pop") 
+	if otp_recored==otp1[0:4]:
+		return HttpResponse("true")
+	else:
+		return HttpResponse("false")
+
 def fetchhaha(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
