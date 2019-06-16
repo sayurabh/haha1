@@ -190,7 +190,7 @@ def deletae(request):
 	print("Selecting rows from mobile table using cursor.fetchall")
 	mobile_records = cursor.rowcount 
 	
-	print len(mobile_records)
+	#print len(mobile_records)
 	conn.commit()
 	conn.close()
 	return HttpResponse("pop")
