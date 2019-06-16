@@ -130,4 +130,11 @@ def fetchhaha(request):
 	#conn.commit()
 	conn.close()
 	return HttpResponse("pop")
+
+def upload_json(request):
+	input_file = open ('merge.json')
+	json_array = json.load(input_file)
+	store_list = []
+	for item in json_array:
+		print item
 	
