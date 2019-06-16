@@ -131,17 +131,18 @@ def callback3(request):
 	cur.execute(postgres_insert_query, record_to_insert)
 	#columns = ('name', 'id' )
 	#results = []
-	results = json.loads(cur.fetchall())
+	#results = json.loads(cur.fetchall())
 	#for row in cur.fetchall():
 	#    results.append(dict(zip(columns, row)))
-	#mobile = json.dumps(cur.fetchall())
-	print list(results)
+	mobile = json.dumps(cur.fetchall())
+	json_1 = json.loads(mobile)
+	print json1[0]
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
 	#conn.close()
 
-	return HttpResponse(results)
+	return HttpResponse(json1)
 
 
 def fetchhaha(request):
