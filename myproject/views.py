@@ -144,7 +144,7 @@ def callback3(request):
 	#	otp_recored = row[1]
 	#conn.close()
 
-	return HttpResponse(json_2)
+	return JsonResponse(mobile)
 
 
 def fetchhaha(request):
