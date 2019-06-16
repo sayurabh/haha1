@@ -123,18 +123,19 @@ def callback3(request):
 	print "Opened database successfully"
 	cur = conn.cursor(cursor_factory=RealDictCursor)
 	message = request.POST.get('search')
+	stmt = 'select row_to_json(row) from (SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC) row;'
 
-
-	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
+	#postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
 	record_to_insert = (message+"%",)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
-	cur.execute(postgres_insert_query, record_to_insert)
-	columns = ('name', 'id' )
-	results = []
-	for row in cur.fetchall():
-	    results.append(dict(zip(columns, row)))
+	cur.execute(stmt, record_to_insert)
+	#columns = ('name', 'id' )
+	#results = []
+	results = cur.fetchall()
+	#for row in cur.fetchall():
+	#    results.append(dict(zip(columns, row)))
 	#mobile = json.dumps(cur.fetchall())
-	print results
+	print list(results)
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
