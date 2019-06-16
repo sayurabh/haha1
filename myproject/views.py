@@ -125,7 +125,7 @@ def callback3(request):
 	message = request.POST.get('search')
 
 
-	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s"""
+	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
 	record_to_insert = (message+"%",)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
