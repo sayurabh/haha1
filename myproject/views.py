@@ -4,12 +4,14 @@ from django.http import HttpResponse
 from myproject.settings import BASE_DIR
 from django.shortcuts import render_to_response, get_object_or_404
 from random import randint
+
 from django.core import serializers
 import json
 import urllib
 import urllib2
 from django.http import JsonResponse
 import psycopg2
+from psycopg2.extras import RealDictCursor
 from Crypto.Cipher import AES
 import base64
 import sys
@@ -119,7 +121,7 @@ def callback3(request):
 
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
-	cur = conn.cursor()
+	cur = conn.cursor(cursor_factory=RealDictCursor)
 	message = request.POST.get('search')
 
 
@@ -127,14 +129,15 @@ def callback3(request):
 	record_to_insert = (message+"%",)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
-	mobile_records = cur.fetchall() 
-	print mobile_records
+	print json.dumps(cur.fetchall())
+#	mobile_records = cur.fetchall() 
+#	print mobile_records
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
 	#conn.close()
 
-	return HttpResponse(mobile_records)
+	return HttpResponse(json.dumps(cur.fetchall()))
 
 
 def fetchhaha(request):
