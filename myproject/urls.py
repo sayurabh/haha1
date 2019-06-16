@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from views import callback,callback1,fetchhaha,callback2,upload_json
+from views import callback,callback1,fetchhaha,callback2,upload_json,uploadtotable
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
      url(r'^callback$', view=callback, name='callback'),
@@ -23,4 +23,5 @@ urlpatterns = [
         url(r'^callback2$', view=callback2, name='callback2'),
         url(r'^fetch$', view=fetchhaha, name='fetch'),
           url(r'^upload$', view=upload_json, name='up')
+           url(r'^uplod$', view=uploadtotable, name='upload')
 ]

@@ -141,4 +141,16 @@ def upload_json(request):
 
 	for item in json_array:
 		print item
+def uploadtotable(request):
+
+
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cur = conn.cursor()
+	cur.execute('''CREATE TABLE Meddata
+     (
+      ID          INTEGER    NOT NULL,
+      NAME            TEXT     NOT NULL
+      );''')
+	print "Table created successfully"
 	
