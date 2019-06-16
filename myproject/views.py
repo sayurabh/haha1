@@ -138,10 +138,16 @@ def upload_json(request):
 	input_file = open (path)
 	json_array = json.load(input_file)
 	store_list = []
-
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cur = conn.cursor()
 	for item in json_array:
 		print item["name"].lower()
 		print item["productId"]
+		query =  "INSERT INTO Meddata (ID, NAME) VALUES (%s, %s);"
+		data = (item["productId"], item["name"].lower())
+		cur.execute(query, data)
+		conn.commit()
 def uploadtotable(request):
 
 
