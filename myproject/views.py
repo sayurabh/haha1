@@ -1,6 +1,7 @@
 from django.template import Context, RequestContext
 from django.http import JsonResponse
 from django.http import HttpResponse
+from myproject.settings import BASE_DIR
 from django.shortcuts import render_to_response, get_object_or_404
 from random import randint
 from django.core import serializers
@@ -132,9 +133,11 @@ def fetchhaha(request):
 	return HttpResponse("pop")
 
 def upload_json(request):
+	print BASE_DIR
 	input_file = open ('merge.json')
 	json_array = json.load(input_file)
 	store_list = []
+
 	for item in json_array:
 		print item
 	
