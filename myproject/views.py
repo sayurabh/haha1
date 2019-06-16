@@ -159,5 +159,6 @@ def uploadtotable(request):
       ID          INTEGER    NOT NULL,
       NAME            TEXT     NOT NULL
       );''')
+	conn.commit()
 	print "Table created successfully"
 	
