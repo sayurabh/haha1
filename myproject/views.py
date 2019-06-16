@@ -134,7 +134,7 @@ def fetchhaha(request):
 
 def upload_json(request):
 	print BASE_DIR
-	path = XMLFILES_FOLDER+'/merge.json'
+	path = BASE_DIR+'/merge.json'
 	input_file = open (path)
 	json_array = json.load(input_file)
 	store_list = []
