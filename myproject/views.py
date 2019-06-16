@@ -123,6 +123,7 @@ def callback3(request):
 	print "Opened database successfully"
 	cur = conn.cursor(cursor_factory=RealDictCursor)
 	message = request.POST.get('search')
+	message = request.POST.get('pg')
 	#stmt = 'select row_to_json(row) from (SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC) row;'
 
 	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
@@ -136,6 +137,7 @@ def callback3(request):
 	#    results.append(dict(zip(columns, row)))
 	mobile = json.dumps(cur.fetchall())
 	json_1 = json.loads(mobile)
+	print len(json_1)
 	print json_1[0]['id']
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
