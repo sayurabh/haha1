@@ -129,14 +129,18 @@ def callback3(request):
 	record_to_insert = (message+"%",)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
-	mobile = json.dumps(cur.fetchall())
-	print mobile[0]
+	columns = ('name', 'id' )
+	results = []
+	for row in cur.fetchall():
+	    results.append(dict(zip(columns, row)))
+	#mobile = json.dumps(cur.fetchall())
+	print results
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
 	#conn.close()
 
-	return HttpResponse(mobile)
+	return HttpResponse(results)
 
 
 def fetchhaha(request):
