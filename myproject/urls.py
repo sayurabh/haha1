@@ -23,5 +23,7 @@ urlpatterns = [
         url(r'^callback2$', view=callback2, name='callback2'),
         url(r'^fetch$', view=fetchhaha, name='fetch'),
           url(r'^upload$', view=upload_json, name='up'),
-           url(r'^uplod$', view=uploadtotable, name='upload')
+           url(r'^uplod$', view=uploadtotable, name='upload'),
+              url(r'^fetchmed$', view=fetchhah, name='fetch1')
+
 ]
