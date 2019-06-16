@@ -170,11 +170,12 @@ def fetchhah(request):
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
 	mobile_records = cursor.fetchall() 
-	print len(mobile_records)
+	#print len(mobile_records)
 	print("Print each row and it's columns values")
 	for row in mobile_records:
 		print("Id = ", row[0], )
 		print("Model = ", row[1],"\n")
+	print len(mobile_records)
 	#conn.commit()
 	conn.close()
 	return HttpResponse("pop")
