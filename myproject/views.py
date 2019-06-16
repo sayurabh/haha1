@@ -140,7 +140,8 @@ def upload_json(request):
 	store_list = []
 
 	for item in json_array:
-		print item["name"]
+		print item["name"].lower()
+		print item["productId"]
 def uploadtotable(request):
 
 
