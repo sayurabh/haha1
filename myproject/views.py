@@ -115,6 +115,28 @@ def callback2(request):
 	else:
 		return HttpResponse("false")
 
+def callback3(request):
+
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cur = conn.cursor()
+	message = request.POST.get('search')
+
+
+	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s"""
+	record_to_insert = (message+"%",)
+	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
+	cur.execute(postgres_insert_query, record_to_insert)
+	mobile_records = cur.fetchall() 
+	print mobile_records
+	#print("Print each row and it's columns values")
+	#for row in mobile_records:
+	#	otp_recored = row[1]
+	#conn.close()
+
+	return HttpResponse("true")
+
+
 def fetchhaha(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
