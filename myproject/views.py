@@ -137,14 +137,14 @@ def callback3(request):
 	#    results.append(dict(zip(columns, row)))
 	mobile = json.dumps(cur.fetchall())
 	json_1 = json.loads(mobile)
-	
+	json_2 = json.dumps(json_1[0:9])
 	print json_1[0]['id']
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
 	#conn.close()
 
-	return HttpResponse(json_1[0:9])
+	return HttpResponse(json_2)
 
 
 def fetchhaha(request):
