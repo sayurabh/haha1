@@ -141,14 +141,15 @@ def callback3(request):
 	data = {'list': []}
 	data['list'].append(json_1[0:9])
 	print data['list']
-	json_13 = json_1[0:9]
-	json_13.update({'nump':"9"})
+	#json_13 = json_1[0:9]
+	data['list'].append({'nump':9})
+	print data
 	#json_13[10] = "9"
 	#print json_13
 	#json_12 = json_13.append({"nump":"9"})
 	#print json_12
 	#json_2 = json.dumps(json_1[0:9])
-	json_3 = json.dumps(json_13)
+	json_3 = json.dumps(data)
 	print json_1[0]['id']
 	print len(json_1)
 	len1 = len(json_1)
