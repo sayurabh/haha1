@@ -141,8 +141,8 @@ def callback3(request):
 	json_2 = json.dumps(json_1[0:9])
 	print json_1[0]['id']
 	print len(cur.fetchall())
-	len = len(cur.fetchall())
-	json_2 = json_2.append({"nump":len})
+	len1 = len(cur.fetchall())
+	json_2 = json_2.append({"nump":len1})
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
