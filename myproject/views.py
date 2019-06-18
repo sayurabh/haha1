@@ -139,16 +139,18 @@ def callback3(request):
 	mobile = json.dumps(cur.fetchall())
 	json_1 = json.loads(mobile)
 	json_2 = json.dumps(json_1[0:9])
+	json_3 = json.loads(json_2)
 	print json_1[0]['id']
 	print len(json_1)
-	len1 = len(cur.fetchall())
-	json_2 = json_2.append({"nump":len1})
+	len1 = len(json_1)
+	json_3 = json_3.append({"nump":len1})
+	json_4 = json.dumps(json_3)
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
 	#conn.close()
 
-	return HttpResponse(json_2)
+	return HttpResponse(json_4)
 
 
 def fetchhaha(request):
