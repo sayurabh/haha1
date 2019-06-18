@@ -142,7 +142,7 @@ def callback3(request):
 	print json_1[0]['id']
 	print len(json_1)
 	len = len(json_1)
-	json_2 = json_2.append("nump":len)
+	json_2 = json_2.append({"nump":len})
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
