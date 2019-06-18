@@ -130,6 +130,7 @@ def callback3(request):
 	record_to_insert = (message+"%",)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
+
 	#columns = ('name', 'id' )
 	#results = []
 	#results = json.loads(cur.fetchall())
@@ -139,6 +140,9 @@ def callback3(request):
 	json_1 = json.loads(mobile)
 	json_2 = json.dumps(json_1[0:9])
 	print json_1[0]['id']
+	print len(json_1)
+	len = len(json_1)
+	json_2 = json_2.append("nump":len)
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
