@@ -139,6 +139,7 @@ def callback3(request):
 	mobile = json.dumps(cur.fetchall())
 	json_1 = json.loads(mobile)
 	json_13 = json_1[0:9]
+	print json_13
 	json_12 = json_13.append({"nump":"9"})
 	print json_12
 	#json_2 = json.dumps(json_1[0:9])
