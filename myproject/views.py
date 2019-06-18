@@ -145,6 +145,7 @@ def callback3(request):
 	len1 = len(json_1)
 	json_3 = json_3.append({"nump":len1})
 	json_4 = json.dumps(json_3)
+	print json_4
 	#print("Print each row and it's columns values")
 	#for row in mobile_records:
 	#	otp_recored = row[1]
