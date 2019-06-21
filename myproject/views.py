@@ -138,6 +138,7 @@ def callback3(request):
 	#    results.append(dict(zip(columns, row)))
 	mobile = json.dumps(cur.fetchall())
 	json_1 = json.loads(mobile)
+	print len(json_1)
 	data = {'list': []}
 	data['list'].append(json_1[0:9])
 	print data['list']
