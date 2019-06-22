@@ -209,8 +209,8 @@ def upload_json(request):
 	for item in json_array:
 		print item["name"].lower()
 		print item["productId"]
-		query =  "INSERT INTO Meddata (ID, NAME) VALUES (%s, %s);"
-		data = (item["productId"], item["name"].lower())
+		query =  "INSERT INTO medyoy (ID, NAME,MAN,MEA,PACK) VALUES (%s, %s,%s,%s,%s);"
+		data = (item["productId"], item["name"],item["manufacturer]",item["measurementUnit"],item["packfrom"]])
 		cur.execute(query, data)
 		conn.commit()
 def uploadtotable(request):
@@ -219,12 +219,13 @@ def uploadtotable(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute('''CREATE TABLE medyoyo
+	cur.execute('''CREATE TABLE medyoy
      (
       ID          INTEGER    NOT NULL,
       NAME            TEXT     NOT NULL,
       MAN TEXT NOT NULL,
-      MEA TEXT NOT NULL
+      MEA TEXT NOT NULL,
+      PACK TEXT NOT NULL
       );''')
 	conn.commit()
 	print "Table created successfully"
