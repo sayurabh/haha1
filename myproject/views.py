@@ -133,7 +133,7 @@ def callback3(request):
 
 	#columns = ('name', 'id' )
 	#results = []
-	#results = json.loads(cur.fetchall())
+	#results = json.loads(cur.fetchall())[]
 	#for row in cur.fetchall():
 	#    results.append(dict(zip(columns, row)))
 	mobile = json.dumps(cur.fetchall())
@@ -143,7 +143,15 @@ def callback3(request):
 	if len1 <= 10 and len1 >= 1:
 		data['list'].append(json_1)
 	else:
-		data['list'].append(json_1[0:10])
+		rem = len1-pg*10
+		len2 = pg*10
+		if rem < 10 and rem > 0:
+			data['list'].append(json_1[len2:len1])
+		else:
+			data['list'].append(json_1[len2:len2+10])
+
+
+#		data['list'].append(json_1[0:10])
 	print data['list']
 	#json_13 = json_1[0:9]
 	data['list'].append({'nump':len1})
