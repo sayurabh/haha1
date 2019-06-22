@@ -124,6 +124,7 @@ def callback3(request):
 	cur = conn.cursor(cursor_factory=RealDictCursor)
 	message = request.POST.get('search')
 	pg = request.POST.get('pg')
+	pg = int(pg)
 	#stmt = 'select row_to_json(row) from (SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC) row;'
 
 	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
