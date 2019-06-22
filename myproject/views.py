@@ -210,7 +210,7 @@ def upload_json(request):
 		print item["name"].lower()
 		print item["productId"]
 		query =  "INSERT INTO medyoy (ID, NAME,MAN,MEA,PACK) VALUES (%s, %s,%s,%s,%s);"
-		data = (item["productId"], item["name"],item["manufacturer]",item["measurementUnit"],item["packform"]])
+		data = (item["productId"], item["name"],item["manufacturer"],item["measurementUnit"],item["packform"])
 		cur.execute(query, data)
 		conn.commit()
 def uploadtotable(request):
