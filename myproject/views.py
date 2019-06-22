@@ -219,10 +219,12 @@ def uploadtotable(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute('''CREATE TABLE Meddata
+	cur.execute('''CREATE TABLE medyoyo
      (
       ID          INTEGER    NOT NULL,
-      NAME            TEXT     NOT NULL
+      NAME            TEXT     NOT NULL,
+      MAN TEXT NOT NULL,
+      MEA TEXT NOT NULL
       );''')
 	conn.commit()
 	print "Table created successfully"
