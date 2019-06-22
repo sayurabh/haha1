@@ -252,7 +252,7 @@ def deletae(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cursor = conn.cursor()
-	postgreSQL_select_Query = "delete from meddata"
+	postgreSQL_select_Query = "delete from medyoy"
 	#postgreSQL_select_Query = "truncate otptable;"
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
