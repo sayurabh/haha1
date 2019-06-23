@@ -282,9 +282,10 @@ def drop(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cursor = conn.cursor()
-	cursor.execute("""DROP TABLE meddata""")
-	cursor.execute("""DROP TABLE medyoyo""")
-	cursor.execute("""DROP TABLE medyoy""")
+	cursor.execute("""DROP TABLE company""")
+	cursor.execute("""DROP TABLE otptable""")
+	cursor.execute("""DROP TABLE med123""")
+	cursor.execute("""DROP TABLE otptab1""")
 	#print len(mobile_records)
 	conn.commit()
 	conn.close()
