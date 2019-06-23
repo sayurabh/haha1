@@ -210,7 +210,7 @@ def upload_json(request):
 		print item["name"].lower()
 		print item["productId"]
 		query =  "INSERT INTO med1234 (ID, NAME,MAN,MEA,PACK,MRP) VALUES (%s, %s,%s,%s,%s,%s);"
-		data = (item["productId"], item["name"],item["manufacturer"],item["measurementUnit"],item["packform"],item["mrp"])
+		data = (item["productId"], item["name"],item["manufacturer"],item["measurementUnit"],item["packform"],item["mrpDecimal"])
 		cur.execute(query, data)
 		conn.commit()
 def uploadtotable(request):
