@@ -242,7 +242,7 @@ def fetchhah(request):
 	print("Print each row and it's columns values")
 	for row in mobile_records:
 		print("Id = ", row[0], )
-		print("Model = ", row[1],"\n")
+		print("Model = ", row[1],"Model = ", row[2],"Model = ", row[3],"\n")
 	print len(mobile_records)
 	#conn.commit()
 	conn.close()
