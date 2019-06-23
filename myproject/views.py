@@ -277,3 +277,16 @@ def deletat(request):
 	conn.commit()
 	conn.close()
 	return HttpResponse("pop")
+
+def drop(request):
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cursor = conn.cursor()
+	cursor.execute("""DROP TABLE meddata""")
+	cursor.execute("""DROP TABLE medyoyo""")
+	cursor.execute("""DROP TABLE medyoy""")
+	#print len(mobile_records)
+	conn.commit()
+	conn.close()
+	return HttpResponse("pop")
+
