@@ -268,14 +268,10 @@ def deletat(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cursor = conn.cursor()
-	postgreSQL_select_Query = "select * from information_schema.tables"
-	#postgreSQL_select_Query = "truncate otptable;"
-	cursor.execute(postgreSQL_select_Query)
-	print("Selecting rows from mobile table using cursor.fetchall")
-	rows = cursor.fetchall()
-	print "\nShow me the databases:\n"
-	for row in rows:
-		print "   ", row[0]
+	cursor.execute("""SELECT table_name FROM information_schema.tables
+       WHERE table_schema = 'public'""")
+	for table in cursor.fetchall():
+		print(table)
 	
 	#print len(mobile_records)
 	conn.commit()
