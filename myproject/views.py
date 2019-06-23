@@ -209,8 +209,8 @@ def upload_json(request):
 	for item in json_array:
 		print item["name"].lower()
 		print item["productId"]
-		query =  "INSERT INTO med123 (ID, NAME,MAN,MEA,PACK) VALUES (%s, %s,%s,%s,%s);"
-		data = (item["productId"], item["name"],item["manufacturer"],item["measurementUnit"],item["packform"])
+		query =  "INSERT INTO med1234 (ID, NAME,MAN,MEA,PACK,MRP) VALUES (%s, %s,%s,%s,%s,%s);"
+		data = (item["productId"], item["name"],item["manufacturer"],item["measurementUnit"],item["packform"],item["mrp"])
 		cur.execute(query, data)
 		conn.commit()
 def uploadtotable(request):
@@ -219,13 +219,14 @@ def uploadtotable(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cur = conn.cursor()
-	cur.execute('''CREATE TABLE med123
+	cur.execute('''CREATE TABLE med1234
      (
       ID          INTEGER    NOT NULL,
       NAME            TEXT     NOT NULL,
       MAN TEXT NULL,
       MEA TEXT NOT NULL,
-      PACK TEXT NOT NULL
+      PACK TEXT NOT NULL,
+      MRP TEXT NOT NULL
       );''')
 	conn.commit()
 	print "Table created successfully"
@@ -233,7 +234,7 @@ def fetchhah(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cursor = conn.cursor()
-	postgreSQL_select_Query = "select * from med123"
+	postgreSQL_select_Query = "select * from med124"
 	#postgreSQL_select_Query = "truncate otptable;"
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
@@ -252,11 +253,29 @@ def deletae(request):
 	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
 	print "Opened database successfully"
 	cursor = conn.cursor()
-	postgreSQL_select_Query = "delete from medyoy"
+	postgreSQL_select_Query = "delete from med1234"
 	#postgreSQL_select_Query = "truncate otptable;"
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
 	mobile_records = cursor.rowcount 
+	
+	#print len(mobile_records)
+	conn.commit()
+	conn.close()
+	return HttpResponse("pop")
+
+def deletat(request):
+	conn = psycopg2.connect(database = "myproject", user = "myprojectuser", password = "password", host = "127.0.0.1")
+	print "Opened database successfully"
+	cursor = conn.cursor()
+	postgreSQL_select_Query = "SELECT datname from pg_database"
+	#postgreSQL_select_Query = "truncate otptable;"
+	cursor.execute(postgreSQL_select_Query)
+	print("Selecting rows from mobile table using cursor.fetchall")
+	rows = cur.fetchall()
+	print "\nShow me the databases:\n"
+	for row in rows:
+		print "   ", row[0]
 	
 	#print len(mobile_records)
 	conn.commit()
