@@ -285,7 +285,7 @@ def drop(request):
 	cursor.execute("""DROP TABLE company""")
 	cursor.execute("""DROP TABLE otptable""")
 	cursor.execute("""DROP TABLE med123""")
-	cursor.execute("""DROP TABLE otptab1""")
+
 	#print len(mobile_records)
 	conn.commit()
 	conn.close()
