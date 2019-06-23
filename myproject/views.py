@@ -272,7 +272,7 @@ def deletat(request):
 	#postgreSQL_select_Query = "truncate otptable;"
 	cursor.execute(postgreSQL_select_Query)
 	print("Selecting rows from mobile table using cursor.fetchall")
-	rows = cur.fetchall()
+	rows = cursor.fetchall()
 	print "\nShow me the databases:\n"
 	for row in rows:
 		print "   ", row[0]
