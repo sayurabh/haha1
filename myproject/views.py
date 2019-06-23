@@ -127,7 +127,7 @@ def callback3(request):
 	pg = int(pg)
 	#stmt = 'select row_to_json(row) from (SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC) row;'
 
-	postgres_insert_query = """ SELECT * FROM meddata VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
+	postgres_insert_query = """ SELECT * FROM med1234 VALUES WHERE NAME LIKE %s ORDER BY NAME ASC"""
 	record_to_insert = (message+"%",)
 	#cur.execute("INSERT INTO OTPTABLE (MNUMBER,OTP) VALUES (decrypted_padded,otp)");
 	cur.execute(postgres_insert_query, record_to_insert)
